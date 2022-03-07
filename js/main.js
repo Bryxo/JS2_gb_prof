@@ -1,48 +1,45 @@
 'use strict'
+const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 class ProductList{
    constructor(container='.products') {
       this.container = container; //куда вставляем товары
       this.goods = []; //массив товаров
-      this._fetchProducts();//нижнее подчеркивание - это рекомендация, чтобы метод был вызван в текущем классе
-      this.render();//вывод товаров на страницу
-
-      this.sumOfGoods();
+      this._getProducts()
+         .then(data => {
+            this.goods = data;
+            //console.log(this.goods);
+            this.render();
+         });
+      ;
+      this.allProducts = [];
    }
-   _fetchProducts() {  //метод наполняет массив товарами
-      this.goods = [
-            {id: 1, 
-            title: 'Notebook', 
-            price: 2000
-            },
-            {id: 2, title: 'Mouse', price: 20},
-            {id: 3, title: 'Keyboard', price: 200},
-            {id: 4, title: 'Gamepad', price: 50},
-            {id: 666, title: 'test', price: 333},
-      ];
-   }
-   render(){
+   _getProducts(){ //метод - запроса продуктов с сервера методом fetch (промисы)
+      return fetch(`${API}/catalogData.json`)
+         .then(result => result.json())
+         .catch(err => alert(err))
+      }
+   render(){ //метод - вывод товаров на страницу
       const block = document.querySelector(this.container);//куда вставляем товары
       for(let product of this.goods) {
-         const item = new ProductItem(product);
-         block.insertAdjacentHTML("beforeend",item.render());
-//           block.innerHTML += item.render();
+         const productObject = new ProductItem(product);
+         this.allProducts.push(productObject);
+         block.insertAdjacentHTML("beforeend",productObject.render());
       }
    }
-   sumOfGoods () {  //проработать и добавить свойство/метод который считает и выводит сумму товаров
-      let sum = 0;
-      this.goods.forEach(product=> {
-         sum += product.price;
-      })
-      console.log(sum);
-      document.querySelector(`${this.container}`).insertAdjacentHTML("afterend", `Цена всех товаров в массиве = ${sum} у.е.`)
-   };
+   // sumOfGoods () {  //проработать и добавить свойство/метод который считает и выводит сумму товаров
+   //    let sum = 0;
+   //    this.goods.forEach(product=> {
+   //       sum += product.price;
+   //    })
+   //    document.querySelector(`${this.container}`).insertAdjacentHTML("afterend", `Цена всех товаров в массиве = ${sum} у.е.`)
+   // };
 }
 
 class ProductItem{
    constructor(product,img='https://via.placeholder.com/200x150'){
-      this.title = product.title;
-      this.id = product.id;
+      this.title = product.product_name;
       this.price = product.price;
+      this.id = product.id_product;
       this.img = img;
    }
    render(){
@@ -55,25 +52,28 @@ class ProductItem{
    }
 }
 
-class Cart{ // проработать конструктор корзины и  добавить методы
+class Cart{ // класс корзины
    constructor(){
-
+      this.cartGoods = [];
+      this._getCart()
+         .then(data => {
+            this.cartGoods = data.contents;
+            this._render()
+            })
    }
-
-   doOrder(){
-
-   };
-   sumOfCart(){
-
-   };
-   clearCart(){
-
-   };
-}
-
-class CartItem { // проработать конструктор элемента корзины товаров и  добавить методы
-   constructor() {
-
+   _getCart(){  //метод - запроса продуктов в корзине с сервера методом fetch (промисы)
+      return  fetch(`${API}/getBasket.json`)
+         .then(result => result.json())
+         .catch(err => alert(err))
+      }
+   _render() { //метод - вывести товары корзины
+      const block = document.querySelector('.cart_items');//блок, в который вставляем товары корзины
+        // this.cartGood = []; //создаем пустой массив для товаров корзины
+      for(let product of this.cartGoods) { //перебираем товары корзины
+         const cartItem = new CartItem(product); //для каждого элемента корзины создается новый объект CartItem со своими свойствами и методами
+        // this.cartGood.push(cartItem); //
+         block.insertAdjacentHTML("beforeend",cartItem.render());//создаем верстку для каждого товара корзины и вставляем ее на страницу
+      }
    }
    addToCart() {
 
@@ -81,9 +81,38 @@ class CartItem { // проработать конструктор элемент
    deleteFromCart(){
 
    }
+   clearCart(){
+
+   };
+}
+
+class CartItem { // товар корзины
+   constructor(product) {
+      this.title = product.product_name;
+      this.price = product.price;
+      this.id = product.id_product;
+      this.quantity = product.quantity;
+   }
+   render() { //верстка с одним товаром для корзины
+      return   `<div class="cart-item" data-id="${this.id}">
+                  <div class="desc">
+                     <h3>${this.title}</h3>
+                     <p>${this.price} $</p>
+                  </div>
+               </div>`
+   }
 }
 
 let list = new ProductList();
+//list.render();
+let cart = new Cart(); 
+//cart.render();
+//list.sumOfGoods();
+
+document.querySelector('.btn-cart').addEventListener('click', () => {
+      document.querySelector('.cart_items').classList.toggle('hidden');
+   })
+
 
 
 

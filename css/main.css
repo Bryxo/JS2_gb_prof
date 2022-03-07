@@ -39,6 +39,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   -webkit-box-align: center;
@@ -47,15 +48,28 @@ body {
   margin-bottom: 20px;
 }
 
+.hidden {
+  display: none;
+}
+
+.cart_items {
+  position: absolute;
+  top: 68px;
+  right: 20%;
+  border: 1px solid #000;
+}
+
 .btn-cart {
   padding: 15px;
   margin: 10px 0 10px 0;
+  cursor: pointer;
 }
 
 .buy-btn:hover {
   cursor: pointer;
   -webkit-transform: scale(1.15);
           transform: scale(1.15);
+  background-color: gold;
 }
 
 .btn-cancel_box {
