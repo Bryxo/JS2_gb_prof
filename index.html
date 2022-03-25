@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Интернет-магазин</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div class="logo">E-shop</div>
+            <div class="cart">
+                <form action="#" class="search-form" @submit.prevent="filter">
+                    <input type="text" class="search-field" v-model="userSearch">
+                    <!-- v-model - связывает введённое значение в input c свойством userSearch 
+                    т.е. что вводится в input сразу записывается в data.userSearch -->
+                    <button class="btn-search" type="submit">
+                        <!-- при нажатии на кнопку btn-search срабатывает событие submit и оно вызывает @submit, которые мы назначаем для 
+                        вызова метода filter (строка 16). т.е. по нажатию на кнопку выполняется метод filter. 
+                        prevent (это как prevent default в js - переопределить действие по умолчанию)
+                    по умолчанию submit перегружает страницу, а нам это не надо -->
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+                <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
+                <!-- по клику (@click) по кнопке btn-cart меняем свойство корзины showCart на противоположное (!showCart - НЕ showCart. 
+                showCart = false - по умолчанию) т.е. если корзина закрыта - она откроется и наоборот. -->
+                <div class="cart-block" v-show="showCart">
+                    <!-- v-show - отвечает за показ блока cart-block при значении showCart=true и наоборот (аналог display:none/display:block в css)-->
+                    <p v-if="!cartItems.length">Cart is empty</p>
+                    <!-- проверка на ноль !cartItems.length - это тоже самое что cartItems.length==0 
+                    (0 это false по умолчанию). Т.е. если корзина пустая, то length будет равно 0, а если не 0, значит true.
+                    Т.е. если корзина равно нулю, то выводить блок с текстом Cart is empty-->
+                    <div class="cart-item" v-for="item of cartItems" :key="item.id_product">
+                        <!-- в цикле v-for обходим товары (item) товары корзины (cartItems) -->
+                        <!-- для каждого товара строим вёрстку -->
+                        <div class="product-bio">
+                            <img :src="imgCart" alt="Some img">
+                            <div class="product-desc">
+                                <div class="product-title">{{ item.product_name }}</div>
+                                <div class="product-quantity">Quantity: {{ item.quantity }}</div>
+                                <div class="product-single-price">$ {{ item.price }} each</div>
+                            </div>
+                        </div>
+                        <div class="right-block">
+                            <div class="product-price">{{item.quantity*item.price}}</div>
+                            <button class="del-btn" @click="remove(item)">&times;</button>
+                            <!-- кнопка удалить товар - по клику по нему запускается метод remove и в него передается item - товар который следует удалить -->
+                        </div>
+                    </div>
+                    <!-- конец цикла  v-for="item of cartItems" -->
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="products">
+                <div class="product-item" v-for="product of filtered" :key="product.id_product">
+                    <!-- v-for="product of filtered" вывод из массива filtered одинаков как и вывод из массива products (v-for="product of products"), 
+                    т.к. пока не введено что-то в фильтр это два одинаковых массива (свойство mounted в main.js: this.getJson(`${API + this.catalogUrl}`)). 
+                    Это сделано для вывода актуальных данных с учетом фильтрации, а также для возврата к исходному составу товаров без фильтрации-->
+                    <img :src="imgCatalog" alt="Some img">
+                    <div class="desc">
+                        <h3>{{ product.product_name }}</h3>
+                        <p>{{ product.price }} $</p>
+                        <button class="buy-btn" @click="addProduct(product)">Купить</button>
+                        <!-- кнопка добавить товар - по клику по нему запускается метод addProduct и в него передается product - товар который следует добавить -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
+        integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
+
+<!--<div class="cart-item" data-id="${this.id_product}">-->
+<!--<div class="product-bio">-->
+<!--<img src="${this.img}" alt="Some image">-->
+<!--<div class="product-desc">-->
+<!--<p class="product-title">${this.product_name}</p>-->
+<!--<p class="product-quantity">Quantity: ${this.quantity}</p>-->
+<!--<p class="product-single-price">$${this.price} each</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="right-block">-->
+<!--<p class="product-price">${this.quantity*this.price}</p>-->
+<!--<button class="del-btn" data-id="${this.id_product}">&times;</button>-->
+<!--</div>-->
+<!--</div>-->
