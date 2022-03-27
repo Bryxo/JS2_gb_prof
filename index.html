@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Интернет-магазин</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div class="logo">E-shop</div>
+            <div class="cart">
+                <!--
+                    СДЕЛАТЬ ИЗ ЭТОГО КОМПОНЕНТ
+            <form action="#" class="search-form" @submit.prevent="filter">
+                <input type="text" class="search-field" v-model="userSearch">
+                <button type="submit" class="btn-search">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+-->
+            <search></search>
+
+
+
+                <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
+                <!-- по клику (@click) по кнопке btn-cart меняем свойство корзины showCart на противоположное 
+                - она откроется и наоборот. -->
+
+                <cart 
+                    :cart-items="cartItems" 
+                    :img="imgCart" 
+                    :visibility="showCart"
+                >
+                </cart>
+                <!-- компонент vue корзины.
+                двоеточие - это обращение к значению атрибута. Мы в компонент в виде props с именем
+                cart-items отправим значение массива cartItems (берётся из main.js -> mounted).
+                По аналогии отправляем картинку (imgCart) и свойство видимости корзины-->
+            </div>
+
+        </header>
+        <main>
+            <products 
+                :products="filtered" 
+                :img="imgProduct" 
+                @add-product="addProduct">
+            </products>
+            <!-- компонент vue каталога товаров (компонент для вывода товаров каталога). 
+            двоеточие - это обращение к значению атрибута. Мы в компонент в виде props с именем
+            products отправим значение массива filtered (берётся из main.js -> mounted).
+            По аналогии отправляем картинку (imgProduct). 
+            Создаем (регистрируем ($root)) собственное событие @add-product. По клику по кнопке с классом "buy-btn" (описано в productComponent->vue.component(product...) запускается метод 
+            addProduct из main.js)
+            -->
+        </main>
+    </div>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
+        integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/ProductComponent.js"></script>
+    <script src="js/CartComponent.js"></script>
+    <script src="js/filterComponent.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
