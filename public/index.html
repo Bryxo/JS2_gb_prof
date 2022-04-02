@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/style.css">
+   <title>Shop_byv_JS_base_homework8-addToCart</title>
+</head>
+
+<body>
+   <div class="wrapper">
+      <div class="top">
+
+
+         <div id="app">
+            <header class="header">
+               <nav>
+                  <ul class="nav container">
+                     <li class="nav__ref">
+                        <a class="nav__logo" href="index.html"><img src="img/img_nav/nav_logo.png" alt="logo"></a>
+            <!-- !! поиск -->
+                        <filter-el></filter-el>
+            <!-- !! поиск -->
+
+                     </li> 
+                     <li class="nav__menu">
+                        <div class="nav__menu_item">
+                           <label class="burg__menu_label" for="check">
+                              <!-- label для бургера -->
+                              <svg class="svg-hover" width="32" height="23" viewBox="0 0 32 23"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                 <path d="M0 23V20.31H32V23H0ZM0 12.76V10.07H32V12.76H0ZM0 2.69V0H32V2.69H0Z" />
+                              </svg>
+                           </label>
+                        </div>
+                        <input class="burg__menu_input" type="checkbox" id="check"><!-- input для бургера -->
+                        <div class="burg">
+                           <div class="burg__menu">
+                              <label for="check">
+                                 <!-- label для бургера -->
+                                 <div class="burg__closecross"><img src="img/cart_cross.svg" alt="close"></div>
+                              </label>
+                              <h3>menu</h3>
+                              <h4>man</h4>
+                              <ul class="burg__items">
+                                 <li class="burg__item"><a href="#">Accessories</a></li>
+                                 <li class="burg__item"><a href="#">Bags</a></li>
+                                 <li class="burg__item"><a href="#">Denim</a></li>
+                                 <li class="burg__item"><a href="#">T-Shirts</a></li>
+                                 <li class="burg__item"><a href="#">Polos</a></li>
+                              </ul>
+                              <h4>women</h4>
+                              <ul class="burg__items">
+                                 <li class="burg__item"><a href="#">Accessories</a></li>
+                                 <li class="burg__item"><a href="#">Bags</a></li>
+                                 <li class="burg__item"><a href="#">Denim</a></li>
+                                 <li class="burg__item"><a href="#">T-Shirts</a></li>
+                                 <li class="burg__item"><a href="#">Polos</a></li>
+                              </ul>
+                              <h4>kids</h4>
+                              <ul class="burg__items">
+                                 <li class="burg__item"><a href="#">Accessories</a></li>
+                                 <li class="burg__item"><a href="#">Bags</a></li>
+                                 <li class="burg__item"><a href="#">Denim</a></li>
+                                 <li class="burg__item"><a href="#">T-Shirts</a></li>
+                                 <li class="burg__item item--last"><a href="#">Polos</a></li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="nav__menu_item"><a href="#">
+                           <svg class="svg-hover" width="29"
+                                 height="29" viewBox="0 0 29 29" xmlns="http://www.w3.org/2000/svg">
+                                 <path
+                                    d="M14.5 19.937C19 19.937 22.656 15.464 22.656 9.968C22.656 4.472 19 0 14.5 0C13.3631 0.0217413 12.2463 0.303398 11.2351 0.823397C10.2239 1.34339 9.34507 2.08794 8.66602 3C7.12663 4.99573 6.30819 7.45381 6.34399 9.974C6.34399 15.465 10 19.937 14.5 19.937ZM14.5 1.813C18 1.813 20.844 5.472 20.844 9.969C20.844 14.466 17.998 18.125 14.5 18.125C11.002 18.125 8.15603 14.465 8.15503 9.969C8.15403 5.473 11 1.813 14.5 1.813ZM20.844 18.125C20.6036 18.125 20.373 18.2205 20.203 18.3905C20.033 18.5605 19.9375 18.7911 19.9375 19.0315C19.9375 19.2719 20.033 19.5025 20.203 19.6725C20.373 19.8425 20.6036 19.938 20.844 19.938C22.526 19.9399 24.1386 20.6088 25.3279 21.7982C26.5172 22.9875 27.1861 24.6 27.188 26.282C27.1875 26.5221 27.0918 26.7523 26.922 26.9221C26.7522 27.0918 26.5221 27.1875 26.282 27.188H2.71997C2.47985 27.1875 2.24975 27.0918 2.07996 26.9221C1.91016 26.7523 1.81449 26.5221 1.81396 26.282C1.81608 24.6001 2.48517 22.9877 3.67444 21.7985C4.86371 20.6092 6.47608 19.9401 8.15796 19.938C8.39824 19.938 8.62868 19.8425 8.79858 19.6726C8.96849 19.5027 9.06396 19.2723 9.06396 19.032C9.06396 18.7917 8.96849 18.5613 8.79858 18.3914C8.62868 18.2215 8.39824 18.126 8.15796 18.126C5.99541 18.1279 3.92201 18.9875 2.39258 20.5164C0.863144 22.0453 0.00264777 24.1185 0 26.281C0.000794067 27.0019 0.287502 27.693 0.797241 28.2027C1.30698 28.7125 1.99811 28.9992 2.71899 29H26.282C27.0027 28.9989 27.6936 28.7121 28.2031 28.2024C28.7126 27.6927 28.9992 27.0017 29 26.281C28.9974 24.1187 28.1372 22.0457 26.6083 20.5168C25.0793 18.9878 23.0063 18.1276 20.844 18.125Z" />
+                           </svg></a>
+                        </div>
+
+
+                        <div class="nav__menu_item cart_js">
+                           <!-- !! корзина -->
+                           <cart ref="cart"></cart>
+                           <!-- ------------------------------------ -->
+                           <!-- <a href="cart.html"> -->
+                           <!-- ------------------------------------ -->
+                           <!-- </a> -->
+                           <!-- <div class="cart__quantity">0</div>
+                           <svg class="cart__quantity--svg" width="20" height="19" viewBox="0 0 20 19" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                 d="M9.50195 19C14.7487 19 19.002 14.7467 19.002 9.5C19.002 4.25329 14.7487 0 9.50195 0C4.25525 0 0.00195312 4.25329 0.00195312 9.5C0.00195312 14.7467 4.25525 19 9.50195 19Z" />
+                           </svg> -->
+                           <!-- ------------------------------------ -->
+                           <!-- <div class="cart__js_base displayNone">
+                              <div class="cart__js_base-box">
+                                 <div>Наименование</div>
+                                 <div>кол-во</div>
+                                 <div>Цена за 1</div>
+                                 <div>Сумма</div>
+                              </div>
+
+                              <div class="cart__js_base_full">
+                                 вы набрали на $ <span class="cart__js_base_summ">0</span>
+                              </div>
+                           </div> -->
+                           <!-- ------------------------------------ -->
+                           <!-- !! корзина -->
+                        <!-- </div> -->
+                     </li>
+                  </ul>
+               </nav>
+            </header>
+            <div class="content">
+               <section class="content_catalog__promo">
+                  <div class="content_catalog__promo_main container">
+                     <h2 class="new_arrivals">NEW ARRIVALS </h2>
+                     <ul class="home_men_new">
+                        <li> <a href="#">home</a></li>
+                        <li> <a href="#">men</a></li>
+                        <li> <span aria-current="page">new arrivals</span></li>
+                     </ul>
+                  </div>
+               </section>
+               <main>
+                  <div class="filter__flex container">
+                     <div class="filter__left">
+                        <details class="choose_filter">
+                           <summary class="filter container">FILTER <svg class="svg" width="15" height="10"
+                                 viewBox="0 0 15 10" xmlns="http://www.w3.org/2000/svg">
+                                 <path
+                                    d="M0.833333 10H4.16667C4.625 10 5 9.625 5 9.16667C5 8.70833 4.625 8.33333 4.16667 8.33333H0.833333C0.375 8.33333 0 8.70833 0 9.16667C0 9.625 0.375 10 0.833333 10ZM0 0.833333C0 1.29167 0.375 1.66667 0.833333 1.66667H14.1667C14.625 1.66667 15 1.29167 15 0.833333C15 0.375 14.625 0 14.1667 0H0.833333C0.375 0 0 0.375 0 0.833333ZM0.833333 5.83333H9.16667C9.625 5.83333 10 5.45833 10 5C10 4.54167 9.625 4.16667 9.16667 4.16667H0.833333C0.375 4.16667 0 4.54167 0 5C0 5.45833 0.375 5.83333 0.833333 5.83333Z" />
+                              </svg></summary>
+                           <details class="filter_items_left">
+                              <summary class="filter_items">CATEGORY</summary>
+                              <ul class="filter_item container">
+                                 <li><a href="#">Accessories</a></li>
+                                 <li><a href="#">Bags</a></li>
+                                 <li><a href="#">Denim</a></li>
+                                 <li><a href="#">Hoodies & Sweatshirts</a></li>
+                                 <li><a href="#">Jackets & Coats</a></li>
+                                 <li><a href="#">Polos</a></li>
+                                 <li><a href="#">Shirts</a></li>
+                                 <li><a href="#">Shoes</a></li>
+                                 <li><a href="#">Sweaters & Knits</a></li>
+                                 <li><a href="#">T-Shirts</a></li>
+                                 <li><a href="#">Tanks</a></li>
+                              </ul>
+                           </details>
+                           <details class="filter_items_left">
+                              <summary class="filter_items">BRAND</summary>
+                           </details>
+                           <details class="filter_items_left">
+                              <summary class="filter_items">DESIGNER</summary>
+                           </details>
+                        </details>
+                     </div>
+                     <div class="filter__right">
+                        <details class="filter_items_right">
+                           <summary class="choose_filter_right">TRENDING NOW</summary>
+                        </details>
+                        <details class="filter_items_right">
+                           <summary class="choose_filter_right">SIZE</summary>
+                           <ul class="size">
+                              <li><label class="label_size"><input class="input_size" type="checkbox">
+                                    XS</label></li>
+                              <li><label class="label_size"><input class="input_size" type="checkbox">
+                                    S</label></li>
+                              <li><label class="label_size"><input class="input_size" type="checkbox">
+                                    M</label></li>
+                              <li><label class="label_size"><input class="input_size" type="checkbox">
+                                    L</label></li>
+                           </ul>
+                        </details>
+                        <details class="filter_items_right">
+                           <summary class="choose_filter_right">PRICE</summary>
+                        </details>
+                     </div>
+                  </div>
+                  <section>
+                        <products ref="products"></products>
+              <!-- !! products -->
+                        <!-- <div class="products"> -->
+                           <!-- <div class="container">
+ 
+                                 <div class="product__item">
+                                    <div class="product__item_up">
+                                       <a href="/product.html"><img class="product__item_up_img"
+                                             src="img/img_catalog_product/cat_product1.png" alt="product"></a>
+                                       <div class="overlay">
+                                          <button class="btn1" productId="0">Add to cart</button>
+                                       </div>
+                                    </div>
+                                    <div class="product__item_down">
+                                       <p class="item_name"><a class="ref_product" href="/product.html">Имя товара 1</a>
+                                       </p>
+                                       <p class="item_desc">Описание товара 1</p>
+                                       <p class="item_price">$<span class="item_price_value">51.51</span></p>
+                                    </div>
+                                 </div>
+  -->
+                           
+                           <!-- </div> -->
+                        </div>
+                     </section>
+               </main>
+            </div>
+         </div>    
+         
+         
+      </div>
+         <div class="paging container">
+            <ul class="paging_box">
+               <li><a class="paging_li" href="#"><img src="img/img_catalog/arrow_left.svg" alt="arrow_left"></a></li>
+               <li><a class="paging_li" href="#">1</a></li>
+               <li><a class="paging_li" href="#">2</a></li>
+               <li><a class="paging_li" href="#">3</a></li>
+               <li><a class="paging_li" href="#">4</a></li>
+               <li><a class="paging_li" href="#">5</a></li>
+               <li><a class="paging_li" href="#">6</a></li>
+               <li><a class="paging_li" href="#">...</a></li>
+               <li><a class="paging_li" href="#">20</a></li>
+               <li><a class="paging_li" href="#"><img src="img/img_catalog/arrow_right.svg" alt="arrow_left"></a></li>
+            </ul>
+         </div>
+         <footer class="footer">
+            <div class="footer__up">
+               <div class="footer__up_items container">
+                  <div class="footer__up_item">
+                     <img class="footer__up_image" src="img/img_footer/footer_up1.svg" alt="Free Delivery foto">
+                     <h4 class="footer__up_title">Free Delivery</h4>
+                     <p class="footer__up_subtitle">Worldwide delivery on all. Authorit tively morph next-generation innov
+                        tion
+                        with extensive models.
+                     </p>
+                  </div>
+                  <div class="footer__up_item">
+                     <img class="footer__up_image" src="img/img_footer/footer_up2.svg" alt="Free Delivery foto">
+                     <h4 class="footer__up_title">Sales & discounts</h4>
+                     <p class="footer__up_subtitle">Worldwide delivery on all. Authorit tively morph next-generation innov
+                        tion
+                        with extensive models.
+                     </p>
+                  </div>
+                  <div class="footer__up_item">
+                     <img class="footer__up_image" src="img/img_footer/footer_up3.svg" alt="Free Delivery foto">
+                     <h4 class="footer__up_title">Quality assurance</h4>
+                     <p class="footer__up_subtitle">Worldwide delivery on all. Authorit tively morph next-generation innov
+                        tion
+                        with extensive models.
+                     </p>
+                  </div>
+               </div>
+            </div>
+            <div class="footer__middle">
+               <div class="footer__middle_items container">
+                  <div class="footer__middle_left">
+                     <img class="footer__middle_image" src="img/img_footer/footer__middle_image.png" alt="">
+                     <p class="footer__middle_left_text">&quot;Vestibulum quis porttitor dui! Quisque viverra nunc mi, <i>a
+                           pulvinar purus condimentum</i>&quot;</p>
+                  </div>
+                  <div class="footer__middle_right">
+                     <p class="footer__middle_right_title"> <b>SUBSCRIBE</b></p>
+                     <p class="footer__middle_right_subtitle">FOR OUR NEWLETTER AND PROMOTION</p>
+                     <form action="#">
+                        <div class="footer__middle_right_subscribe">
+                           <input class="input_email" type="email" placeholder="Enter Your Email"><button
+                              class="btn_subscribe">Subscribe</button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+            <div class="footer__down">
+               <div class="footer__down_items container">
+                  <div class="footer__down_item1">&copy;2021 Brand All Rights Reserved.</div>
+                  <div class="footer__down_item2">
+                     <ul class="footer__down_ul">
+                        <li>
+                           <a class="ref" href="#">
+                              <div class="footer__down_social_bgd">
+                                 <img class="img" src="img/img_footer/footer_down_facebook.svg" alt="facebook">
+                              </div>
+                           </a>
+                        </li>
+                        <li>
+                           <a class="ref" href="#">
+                              <div class="footer__down_social_bgd">
+                                 <img src="img/img_footer/footer_down_instagram.svg" alt="instagram">
+                              </div>
+                           </a>
+                        </li>
+                        <li>
+                           <a class="ref" href="#">
+                              <div class="footer__down_social_bgd">
+                                 <img src="img/img_footer/footer_down_pinterest.svg" alt="pinterest">
+                              </div>
+                           </a>
+                        </li>
+                        <li>
+                           <a class="ref" href="#">
+                              <div class="footer__down_social_bgd">
+                                 <img src="img/img_footer/footer_down_twitter.svg" alt="twitter">
+                              </div>
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </footer>
+   </div>
+   <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   <script src="js/ProductComponent.js"></script>
+   <script src="js/CartComponent.js"></script>
+   <script src="js/FilterComp.js"></script>
+   <script src="js/ErrorComp.js"></script>
+   <script src="js/main.js"></script>
+</body>
+
+</html>
