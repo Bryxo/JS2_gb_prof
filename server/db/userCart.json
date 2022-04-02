@@ -1,0 +1,24 @@
+{
+    "amount": 46600,
+    "countGoods": 2,
+    "contents": [
+        {
+            "quantity": 2,
+            "id_product": 2,
+            "product_name": "Рубашка",
+            "price": 3000,
+            "product_desc": "Летний бриз",
+            "imgCart": "./img/img_catalog_product/2.png",
+            "imgProduct": "./img/img_catalog_product/2.png"
+        },
+        {
+            "quantity": 2,
+            "id_product": 3,
+            "product_name": "Балахон",
+            "price": 2222,
+            "product_desc": "Тепло круглый год",
+            "imgCart": "./img/img_catalog_product/3.png",
+            "imgProduct": "./img/img_catalog_product/3.png"
+        }
+    ]
+}

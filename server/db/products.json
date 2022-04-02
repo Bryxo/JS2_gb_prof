@@ -1,0 +1,34 @@
+[
+  {
+    "id_product": 1,
+    "product_name": "Куртка",
+    "price": 1600,
+    "product_desc": "Легкая зима",
+    "imgProduct": "./img/img_catalog_product/1.png",
+    "imgCart": "./img/img_catalog_product/1.png"
+  },
+  {
+    "id_product": 2,
+    "product_name": "Рубашка",
+    "price": 3000,
+    "product_desc": "Летний бриз",
+    "imgCart": "./img/img_catalog_product/2.png",
+    "imgProduct": "./img/img_catalog_product/2.png"
+  },
+  {
+    "id_product": 3,
+    "product_name": "Балахон",
+    "price": 2222,
+    "product_desc": "Тепло круглый год",
+    "imgCart": "./img/img_catalog_product/3.png",
+    "imgProduct": "./img/img_catalog_product/3.png"
+  },
+  {
+    "id_product": 4,
+    "product_name": "Кеды",
+    "price": 1015,
+    "product_desc": "Ходить не переходить",
+    "imgCart": "./img/img_catalog_product/4.png",
+    "imgProduct": "./img/img_catalog_product/4.png"
+  }
+]
